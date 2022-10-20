@@ -1,6 +1,7 @@
 # Midterm Project 'Over-engineered'
 
 ## Installation
+Download the repository via Zip or Github Desktop.
 
 ```bash
 npm install
