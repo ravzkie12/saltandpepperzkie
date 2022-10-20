@@ -5,6 +5,8 @@ Download the repository via Zip or Github Desktop.
 
 ```bash
 npm install
+or
+npm i
 ```
 
 ## Hash, Salt and Pepper, and User Authentication Locations
