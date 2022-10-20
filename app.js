@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 // database connection
 const dbURI = 'mongodb+srv://ravzkie12:L4TkyHnmSJ8TkHLW@cluster1.il2cl8b.mongodb.net/'
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-  .then((result) => app.listen(3000, () => console.log('Server is running and DB Connected UWU xd:3000')))
+  .then((result) => app.listen(process.env.PORT || 3000, () => console.log('Server is running and DB Connected UWU xd:3000')))
   .catch((err) => console.log(err))
 
 // routes
