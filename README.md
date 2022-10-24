@@ -1,19 +1,21 @@
 # Midterm Project 'Over-engineered'
 
 ## Installation
+
 Download the repository via Zip or Github Desktop.
 
-```bash
+```
 npm install
 or
 npm i
 ```
 
-## Hash, Salt and Pepper, and User Authentication Locations
+## Hash, Salt and Pepper,User Authentication Locations and Database ENV
 
 ```
 models/User.js
 controllers/authController.js
+.env
 ```
 
 ## Contributing

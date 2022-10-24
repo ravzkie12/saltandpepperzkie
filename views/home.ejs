@@ -9,4 +9,15 @@
   </div>
 </header>
 
+<script>
+  //random image from array
+  const images = ['./ichika_hover.webp', './nino_hover.webp', './miku_hover.webp', './yotsuba_hover.webp', './itsuki_hover.webp'];
+
+  globalThis.addEventListener('load', function () {
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    document.getElementsByClassName('imgHome')[0].src = randomImage;
+    console.log(randomImage);
+  });
+</script>
+
 <%- include('partials/footer'); -%>

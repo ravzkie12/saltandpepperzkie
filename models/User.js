@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const PASSWORD_PEPPER = '8:¯|¯[]-[|\|16/-\(-)][|V4`';
+require('dotenv').config();
+
+const saltRounds = 13;
+const PEPPER = process.env.PEPPER;
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -17,11 +20,17 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'Minimum password length is 6 characters'],
   }
 });
-
 // fire a function before doc saved to db
 userSchema.pre('save', async function (next) {
-  const salt = await bcrypt.genSalt(13);
-  this.password = await bcrypt.hash(this.password + PASSWORD_PEPPER, salt);
+  const salt = await bcrypt.genSalt(saltRounds);
+  const peppyPassword = this.password + PEPPER;
+  this.password = await bcrypt.hash(peppyPassword, salt);
+  next();
+})
+
+// fire a function after doc saved to db
+userSchema.post('save', function (doc, next) {
+  console.log('new user was created and saved', doc);
   next();
 })
 
@@ -29,7 +38,8 @@ userSchema.pre('save', async function (next) {
 userSchema.statics.login = async function (username, password) {
   const user = await this.findOne({ username });
   if (user) {
-    const auth = await bcrypt.compare(password + PASSWORD_PEPPER, user.password);
+    const peppyPassword = password + PEPPER;
+    const auth = await bcrypt.compare(peppyPassword, user.password);
     if (auth) {
       return user;
     }
