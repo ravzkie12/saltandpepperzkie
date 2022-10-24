@@ -1,5 +1,7 @@
 <%- include('partials/header'); -%>
 
+<div hidden id="spinner"></div>
+
 <form>
   <h2>Log in</h2>
 
@@ -18,6 +20,7 @@
   const form = document.querySelector('form');
   const usernameError = document.querySelector('.username.error');
   const passwordError = document.querySelector('.password.error');
+  const spinner = document.getElementById('spinner');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -39,12 +42,14 @@
         },
       });
       const data = await res.json();
+      spinner.setAttribute('hidden', '');
       // console.log(data);
       if (data.errors) {
         usernameError.textContent = data.errors.username;
         passwordError.textContent = data.errors.password;
       }
       if (data.user) {
+        spinner.removeAttribute('hidden');
         location.assign('/');
       }
     } catch (err) {
