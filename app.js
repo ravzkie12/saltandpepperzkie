@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const path = require('path');
 require('dotenv').config();
-
 const app = express();
 
 // middleware

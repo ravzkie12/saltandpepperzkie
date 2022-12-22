@@ -11,8 +11,8 @@ const handleErrors = (err) => {
 
   // handle errors for the login
   if (err.message === 'incorrect username and/or password') {
-    errors.username = err.message;
-    errors.password = err.message;
+    errors.username = 'incorrect username';
+    errors.password = 'incorrect password';
   }
 
   // incorrect password

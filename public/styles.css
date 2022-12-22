@@ -31,11 +31,20 @@ input,
 label,
 button,
 div,
-footer {
+footer,
+span {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   color: #444;
+}
+
+span {
+  display: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 p {
@@ -160,6 +169,10 @@ header .btn {
   font-size: 0.8em;
 }
 
+.badge {
+  color: red;
+}
+
 .img-logo {
   width: 120px;
   display: block;
@@ -181,6 +194,23 @@ header .btn {
   row-gap: 80px;
   margin: 80PX AUTO;
   max-width: 790px;
+}
+
+.valid {
+  color: green;
+}
+
+button:disabled,
+.button-disabled {
+  background: #ddd;
+  color: rgb(122, 122, 122);
+  cursor: not-allowed;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-gap: 20px; */
 }
 
 .character {
