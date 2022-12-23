@@ -14,10 +14,11 @@
   <label for="mainPassword">Password</label>
   <input type="password" name="password" id="mainPassword" required />
   <div class="error password"></div>
-  <span id="StrengthDisp" class="badge displayBadge"></span>
+  <div id="pswmeter"></div>
+  <span id="StrengthDisp" class="badge"></span>
 
   <label for="confirmPassword">Confirm Password</label>
-  <input type="password" name="C onfirmPassword" id="confirmPassword" required />
+  <input type="password" name="ConfirmPassword" id="confirmPassword" required />
   <div class="errPassword" id="ErrConfirmPassword"></div>
 
   <button id="formButtom" disabled>Sign up</button>
@@ -66,6 +67,7 @@
   // --------------------------------------------------------------------
   // Password Requirement and Validation
   function checkPasswordValidation(value) {
+    strengthBadge.classList.remove('valid');
     const isWhitespace = /^(?=.*\s)/;
     if (isWhitespace.test(value)) {
       return 'Password must not contain Whitespaces.';
@@ -91,9 +93,9 @@
       return 'Password must contain at least one Special Symbol.';
     }
 
-    const isValidLength = /^.{12,16}$/;
+    const isValidLength = /^.{12,32}$/;
     if (!isValidLength.test(value)) {
-      return 'Password must be 12-16 Characters Long.';
+      return 'Password must be 12 Characters Long.';
     }
     strengthBadge.classList.add('valid');
     return 'Password is Valid.';
